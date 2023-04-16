@@ -98,6 +98,12 @@ namespace Chrono
             float detectionRange = 0.05f;
             BoxCollider2D collider = GetComponent<BoxCollider2D>();
             RaycastHit2D groundDetection = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, detectionRange, LayerMask.GetMask("Ground"));
+
+            Color rayColor;
+            if (groundDetection.collider != null) rayColor = Color.green; else rayColor = Color.red;
+            Debug.DrawRay(collider.bounds.center + new Vector3(collider.bounds.center.x, 0), Vector2.down * (collider.bounds.extents.y + detectionRange), rayColor);
+            Debug.DrawRay(collider.bounds.center + new Vector3(collider.bounds.center.x, 0), Vector2.down * (collider.bounds.extents.y + detectionRange), rayColor);
+            Debug.DrawRay(collider.bounds.center + new Vector3(0, collider.bounds.center.y), Vector2.right * (collider.bounds.extents.x), rayColor);
             return groundDetection.collider != null;
         }
 
