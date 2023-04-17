@@ -10,10 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     AudioClip jumpSound;
 
-    float moveDelta, moveInput,
-        jumpDelta,
-        gravDelta, gravVelocity;
-    bool isMoving, isJumping, isGrounded, isFalling, flipX;
+    float moveDelta, moveInput, jumpDelta, gravDelta, gravVelocity;
+    bool isMoving, isJumping, jumpInput, isGrounded, isFalling, flipX;
+
+    Vector3 motionVector;
 
     Rigidbody2D playerBody;
     SpriteRenderer playerSprite;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = IsGrounded();
-        ApplyForces();
+        ApplyMotion();
     }
 
     Vector3 Move()
@@ -56,29 +56,28 @@ public class Player : MonoBehaviour
 
     Vector3 Fall()
     {
-        gravDelta = -gravity * Time.deltaTime;
-        gravVelocity += gravDelta * Time.deltaTime;
+        gravDelta = gravity * Time.deltaTime;
+        gravVelocity -= gravDelta * Time.deltaTime;
 
         return new Vector3(0, gravVelocity, 0);
     }
 
-    void ApplyForces()
+    void ApplyMotion()
     {
-        Vector3 forceVector = transform.position;
+        motionVector = transform.position;
 
-        if (isMoving) forceVector += Move();
+        // Add horizontal movement
+        if (isMoving) motionVector += Move();
 
-        if (isJumping) forceVector += Jump() + Fall();
-        else gravVelocity = 0;
-        if (forceVector.y <= 0) isFalling = true;
+        // Add gravity
+        if (isGrounded) gravVelocity = 0;
+        else motionVector += Fall();
 
-        //if (isJumping && !isFalling && IsBonkHead())
-        //{
-        //    forceVector -= Jump() + Fall();
-        //}
+        // Add jump
+        if (isJumping) motionVector += Jump();
 
-        if (isMoving || isJumping) playerBody.MovePosition(forceVector);
-        if (isFalling) isFalling = isJumping = !isGrounded;
+        // If there is move input or we're not grounded apply movement
+        if (isMoving || isJumping || !isGrounded) playerBody.MovePosition(motionVector);
 
     }
 
@@ -92,8 +91,8 @@ public class Player : MonoBehaviour
         if (groundDetection.collider != null) rayColor = Color.green; else rayColor = Color.red;
         Debug.DrawRay(collider.bounds.center + new Vector3(collider.bounds.extents.x, collider.bounds.extents.y), Vector2.down * (collider.bounds.size.y + detectionRange), rayColor);
         Debug.DrawRay(collider.bounds.center + new Vector3(-collider.bounds.extents.x, collider.bounds.extents.y), Vector2.down * (collider.bounds.size.y + detectionRange), rayColor);
-        Debug.DrawRay(collider.bounds.center + new Vector3(collider.bounds.extents.x, collider.bounds.extents.y), Vector2.down * (collider.bounds.size.y + detectionRange), rayColor);
-        Debug.DrawRay(collider.bounds.center + new Vector3(-collider.bounds.extents.x, collider.bounds.extents.y), Vector2.down * (collider.bounds.size.y + detectionRange), rayColor);
+        Debug.DrawRay(collider.bounds.center + new Vector3(-collider.bounds.extents.x, collider.bounds.extents.y), Vector2.right * (collider.bounds.size.x), rayColor);
+        Debug.DrawRay(collider.bounds.center + new Vector3(-collider.bounds.extents.x, -collider.bounds.extents.y), Vector2.right * (collider.bounds.size.x), rayColor);
 
         return groundDetection.collider != null;
     }
@@ -105,9 +104,8 @@ public class Player : MonoBehaviour
         {
             moveInput = Input.GetAxisRaw("Horizontal");
         }
-        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || isGrounded)
+        else if ((moveInput != 0) && (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow) || isGrounded))
         {
-            // consider optimizing the IsGrounded method check so it doesn't happen every frame
             moveInput = 0;
         }
     }
@@ -125,12 +123,29 @@ public class Player : MonoBehaviour
         }
         else if (isMoving) isMoving = false;
 
-        // Set Jumping Flag
-        if (Input.GetKey(KeyCode.Space) && isGrounded && !isJumping)
+        //if (isJumping && isFalling && isGrounded) isJumping = false; isFalling = false;
+
+        //// If motionVector.y is negative set the falling flag
+        //if (motionVector.y < 0) isFalling = true;
+
+        // Set jump flags when we push space on the ground
+        if (Input.GetKey(KeyCode.Space) && isGrounded && !jumpInput && !isJumping)
         {
+            jumpInput = true;
             isJumping = true;
-            gravVelocity = 0;
             PlaySound(jumpSound);
+        }
+
+        // Unset jumpInput flag when we're off the ground
+        if (!isGrounded && jumpInput && jumpInput)
+        {
+            jumpInput = false;
+        }
+
+        // Unset isJumping when we're back on the ground
+        if (isGrounded && !jumpInput && isJumping)
+        {
+            isJumping = false;
         }
     }
 

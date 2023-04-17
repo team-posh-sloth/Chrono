@@ -2593,7 +2593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpMagnitude: 11
+  jumpMagnitude: 9
   gravity: 9.8
   jumpSound: {fileID: 8300000, guid: 72c166ed30c59b040a25c7e426ac8f95, type: 3}
 --- !u!95 &572513750
