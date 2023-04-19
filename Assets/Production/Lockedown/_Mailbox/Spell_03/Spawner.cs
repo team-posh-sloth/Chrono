@@ -15,6 +15,7 @@ namespace SpellMender_03
         [SerializeField] float timeBetweenSpawns;
         [SerializeField] float timeBetweenObjects;
         [SerializeField] float despawnTime;
+        [SerializeField] float initialSpawnDelay;
 
         List<GameObject> spawns = new List<GameObject>();
 
@@ -24,7 +25,7 @@ namespace SpellMender_03
         // Start is called before the first frame update
         void Start()
         {
-            spawnTimer = timeBetweenSpawns;
+            spawnTimer = initialSpawnDelay;
             dropCounter = objectsPerSpawn;
         }
 

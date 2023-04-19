@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 1907991037951102697, guid: 662de316714d9d84fbdebe7c145e594f,
     type: 3}
-  kinematicFallSpeed: 5
+  kinematicFallSpeed: 5.5
   kinematicXSpeed: 0
-  objectsPerSpawn: 2
-  timeBetweenSpawns: 1
+  objectsPerSpawn: 5
+  timeBetweenSpawns: 0.8
   timeBetweenObjects: 0.2
   despawnTime: 3
