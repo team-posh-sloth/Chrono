@@ -262,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 0}
   speed: 5
-  jumpMagnitude: 9
+  jumpMagnitude: 7.5
   gravity: 9.8
   jumpSound: {fileID: 8300000, guid: 72c166ed30c59b040a25c7e426ac8f95, type: 3}
   jumpSoundResetTime: 8
