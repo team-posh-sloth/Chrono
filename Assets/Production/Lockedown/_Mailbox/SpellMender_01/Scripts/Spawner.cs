@@ -13,15 +13,16 @@ namespace SpellMender_01
         [SerializeField] int objectsPerSpawn;
         [SerializeField] float timeBetweenSpawns;
         [SerializeField] float timeBetweenObjects;
+        [SerializeField] float initialSpawnDelay;
 
         float spawnTimer;
         float dropTimer;
         int dropCounter;
 
         // Start is called before the first frame update
-        void Start()
+        void Start() 
         {
-            spawnTimer = timeBetweenSpawns;
+            spawnTimer = initialSpawnDelay;
             dropCounter = objectsPerSpawn;
         }
 
