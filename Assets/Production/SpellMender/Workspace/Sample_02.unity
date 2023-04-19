@@ -133,12 +133,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 1268556461284831918, guid: 4a1f6aee7855d494e883ea13f78532cf,
-        type: 3}
-      propertyPath: objectToSpawn
-      value: 
-      objectReference: {fileID: 1907991037951102697, guid: 662de316714d9d84fbdebe7c145e594f,
-        type: 3}
     - target: {fileID: 1268556461284831919, guid: 4a1f6aee7855d494e883ea13f78532cf,
         type: 3}
       propertyPath: m_RootOrder

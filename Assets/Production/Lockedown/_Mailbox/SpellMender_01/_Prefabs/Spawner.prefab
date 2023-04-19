@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268556461284831919}
-  - component: {fileID: 1268556461284831918}
+  - component: {fileID: 140256299}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1268556461284831918
+--- !u!114 &140256299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,12 +40,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1268556461284831917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28128d0dcf93bf5499ade47b747e70e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f9ec681a5f4b7a4d973da5684c6b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
+  objectToSpawn: {fileID: 1907991037951102697, guid: 662de316714d9d84fbdebe7c145e594f,
+    type: 3}
   kinematicFallSpeed: 5
   kinematicXSpeed: 0
   objectsPerSpawn: 2
   timeBetweenSpawns: 1
   timeBetweenObjects: 0.2
+  despawnTime: 3
