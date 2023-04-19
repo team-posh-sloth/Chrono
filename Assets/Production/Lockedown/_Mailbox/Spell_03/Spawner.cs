@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting;
 
-namespace SpellMender_03
+namespace Lockedown
 {
     public class Spawner : MonoBehaviour
     {
@@ -16,8 +16,6 @@ namespace SpellMender_03
         [SerializeField] float timeBetweenObjects;
         [SerializeField] float despawnTime;
         [SerializeField] float initialSpawnDelay;
-
-        List<GameObject> spawns = new List<GameObject>();
 
         float spawnTimer, dropTimer, despawnTimer;
         int dropCounter;
@@ -50,8 +48,6 @@ namespace SpellMender_03
                 if (instance.TryGetComponent(out Rigidbody2D rb) && rb.isKinematic) rb.velocity = new Vector2(kinematicXSpeed, -kinematicFallSpeed);
 
                 if (objectsPerSpawn > 1) dropTimer = timeBetweenObjects;
-
-                spawns.Add(instance);
 
                 Destroy(instance, despawnTime);
 
