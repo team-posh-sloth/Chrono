@@ -201,7 +201,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2511,7 +2511,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 12
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6096,9 +6096,8 @@ Tilemap:
   - m_RefCount: 27
     m_Data: {fileID: 9172904533233386268, guid: 50430295564c55245823a0c58250faf4,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 8699534998489769665, guid: 50430295564c55245823a0c58250faf4,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -7764427984128431411, guid: 50430295564c55245823a0c58250faf4,
       type: 3}
@@ -6109,7 +6108,7 @@ Tilemap:
     m_Data: {fileID: -7578503878483531215, guid: 50430295564c55245823a0c58250faf4,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -8749026425836423757, guid: 50430295564c55245823a0c58250faf4,
+    m_Data: {fileID: 8699534998489769665, guid: 50430295564c55245823a0c58250faf4,
       type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 7309524888716988733, guid: 50430295564c55245823a0c58250faf4,
@@ -6117,8 +6116,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 2993578918852256636, guid: 50430295564c55245823a0c58250faf4,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -8749026425836423757, guid: 50430295564c55245823a0c58250faf4,
+      type: 3}
   m_TileMatrixArray:
   - m_RefCount: 582
     m_Data:
@@ -8292,7 +8292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.840008, y: -0.5, z: -10}
+  m_LocalPosition: {x: -5.1000047, y: -0.49999952, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1716133970}
@@ -8765,12 +8765,12 @@ PrefabInstance:
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.84
+      value: -5.1
       objectReference: {fileID: 0}
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.77
+      value: -3.94
       objectReference: {fileID: 0}
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
