@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpellMender_03
+namespace Lockedown
 {
     public class Player : MonoBehaviour
     {

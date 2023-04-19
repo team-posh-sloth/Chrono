@@ -2389,12 +2389,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0ca28e96c99b745a835ca7057dd345, type: 3}
---- !u!4 &364872273 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6396261931328599447, guid: 1a0ca28e96c99b745a835ca7057dd345,
-    type: 3}
-  m_PrefabInstance: {fileID: 364872272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2785,7 @@ MonoBehaviour:
   objectsPerSpawn: 0
   timeBetweenSpawns: 0
   timeBetweenObjects: 0
+  initialSpawnDelay: 0
 --- !u!1 &1964608314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6396261931328599445, guid: 1a0ca28e96c99b745a835ca7057dd345,
@@ -2984,16 +2979,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4888525002356010363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5643f8f7e3be3545a8af5e2b20c7e91, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa476c30937a1048b005ff85b57fd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 364872273}
+  checkpoint: {fileID: 0}
   speed: 5
   jumpMagnitude: 9
   gravity: 9.8
   worldTimeDilation: 0.25
   PlayerTimeDilation: 0.75
-  jumpSound: {fileID: 8300000, guid: 72c166ed30c59b040a25c7e426ac8f95, type: 3}
+  jumpSound: {fileID: 0}
   jumpSoundResetTime: 8
 --- !u!82 &5862692115875967524
 AudioSource:
