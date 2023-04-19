@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lockedown
+namespace Chrono
 {
     public class Checkpoint : MonoBehaviour
     {
