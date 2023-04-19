@@ -15,6 +15,7 @@ namespace Lockedown
         [SerializeField] float timeBetweenSpawns;
         [SerializeField] float timeBetweenObjects;
         [SerializeField] float despawnTime;
+        [SerializeField] float initialSpawnDelay;
 
         float spawnTimer, dropTimer, despawnTimer;
         int dropCounter;
@@ -22,7 +23,7 @@ namespace Lockedown
         // Start is called before the first frame update
         void Start()
         {
-            spawnTimer = timeBetweenSpawns;
+            spawnTimer = initialSpawnDelay;
             dropCounter = objectsPerSpawn;
         }
 
