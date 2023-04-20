@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 283632644016759572}
   - component: {fileID: 8978887853662615207}
   - component: {fileID: 4308399196412595597}
+  - component: {fileID: 5364915915826844877}
   m_Layer: 8
   m_Name: log platform
   m_TagString: Untagged
@@ -131,3 +132,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.125, y: 0.52406025}
   m_EdgeRadius: 0
+--- !u!114 &5364915915826844877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143046251831662204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89038e61466ed0c4fa95ea31ad02d83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

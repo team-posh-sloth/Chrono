@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1907991037951102694}
   - component: {fileID: 3851234947885411907}
   - component: {fileID: -4974303596019443945}
+  - component: {fileID: -9035428223123862534}
   m_Layer: 0
   m_Name: raindrop
   m_TagString: HurtsPlayer
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5651792, y: 0.6314101}
   m_EdgeRadius: 0
+--- !u!114 &-9035428223123862534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907991037951102697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89038e61466ed0c4fa95ea31ad02d83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
