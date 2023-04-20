@@ -177,6 +177,7 @@ namespace Chrono
             else if (Input.GetKeyUp(KeyCode.Space))
             {
                 isJumping = false;
+                gravVelocity = 0;
             }
 
             // Swap jumping flags when we're off the ground
