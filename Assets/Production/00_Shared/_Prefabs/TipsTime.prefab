@@ -352,7 +352,6 @@ GameObject:
   - component: {fileID: 8764403545894714321}
   - component: {fileID: 2195152778291930703}
   - component: {fileID: 4308326614559113313}
-  - component: {fileID: 1588627422068478889}
   m_Layer: 5
   m_Name: TipsTime
   m_TagString: Untagged
@@ -442,22 +441,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &1588627422068478889
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8422929332300278218}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5ad7fab627b62843940aa5bce42b5c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
