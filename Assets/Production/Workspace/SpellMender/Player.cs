@@ -174,6 +174,10 @@ namespace Chrono
                     jumpSoundResetTimer = jumpSoundResetTime;
                 }
             }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isJumping = false;
+            }
 
             // Swap jumping flags when we're off the ground
             if (!isGrounded && jumpInput && !isJumping)
