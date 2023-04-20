@@ -8618,7 +8618,12 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -8697,7 +8702,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -9134,7 +9139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.11, y: 12.63, z: -10}
+  m_LocalPosition: {x: 20.55, y: -0.50000024, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1716133970}
@@ -9378,7 +9383,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -9973,7 +9978,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -10052,7 +10057,12 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -10400,7 +10410,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -10606,12 +10616,12 @@ PrefabInstance:
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.11
+      value: 20.55
       objectReference: {fileID: 0}
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.63
+      value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: 4888525002849052774, guid: 0bc173fbebe11a848ba94f4c669d52ff,
         type: 3}
@@ -10810,7 +10820,12 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -10964,7 +10979,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -11342,7 +11357,7 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
@@ -11421,17 +11436,22 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: initialSpawnDelay
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: timeBetweenSpawns
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
+        type: 3}
+      propertyPath: timeBetweenObjects
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8f29538907b8634d85218c0d0de54fc, type: 3}
@@ -11713,7 +11733,12 @@ PrefabInstance:
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
       propertyPath: objectsPerSpawn
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222345544462920898, guid: b8f29538907b8634d85218c0d0de54fc,
         type: 3}
