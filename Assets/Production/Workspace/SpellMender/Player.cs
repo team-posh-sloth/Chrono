@@ -236,6 +236,15 @@ namespace Chrono
                 transform.position = checkpoint.transform.position;
             }
         }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.layer == 9 && collision.gameObject.TryGetComponent(out Rigidbody2D rb))
+            {
+                motionVector += new Vector3(rb.velocity.x * GetPlayerDeltaTime(), rb.velocity.y * GetPlayerDeltaTime());
+                isGrounded = true;
+            }
+        }
     }
 
 }
