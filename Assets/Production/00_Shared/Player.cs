@@ -6,7 +6,7 @@ namespace Chrono
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] Transform checkpoint;
+        public Checkpoint checkpoint;
         [SerializeField] float speed = 5, jumpMagnitude = 9, gravity = 9.8f, worldTimeDilation = 0.25f, PlayerTimeDilation = 0.75f;
 
         [SerializeField] AudioClip jumpSound;
@@ -29,6 +29,10 @@ namespace Chrono
             playerSprite = GetComponent<SpriteRenderer>();
             playerAnim = GetComponentInChildren<Animator>();
             playerAudio = GetComponent<AudioSource>();
+
+            // Sets a checkpoint if none is assigned.
+            if (checkpoint == null) GameObject.FindGameObjectWithTag("Respawn").TryGetComponent(out checkpoint); 
+            checkpoint.SetActive(true);
         }
 
         private void Update()
@@ -222,14 +226,9 @@ namespace Chrono
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Trigger is entered");
-
-            if (collision.tag == "HurtsPlayer")
+            if (collision.CompareTag("HurtsPlayer"))
             {
-                if (checkpoint == null) checkpoint = GameObject.FindGameObjectWithTag("Respawn").transform;
-
-                Debug.Log($"Attempting to teleport player to {checkpoint.position}");
-                transform.position = checkpoint.position;
+                transform.position = checkpoint.transform.position;
             }
         }
     }
