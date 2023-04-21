@@ -13,10 +13,10 @@ namespace Chrono
         [SerializeField] int jumpSoundResetTime = 8;
         int jumpSoundResetTimer;
 
-        float moveDelta, moveInput, jumpDelta, gravDelta, gravVelocity;
-        bool isMoving, isJumping, jumpInput, isGrounded, flipX;
+        float moveDelta, moveInput, jumpDelta, gravDelta, gravVelocity, platformDeltaX, platformDeltaY;
+        bool isMoving, isJumping, jumpInput, isGrounded, flipX, isOnPlatform;
 
-        Vector3 motionVector;
+        Vector3 motionVector, platformVector;
 
         Rigidbody2D playerBody;
         SpriteRenderer playerSprite;
@@ -31,15 +31,17 @@ namespace Chrono
             playerAudio = GetComponent<AudioSource>();
 
             // Sets a checkpoint if none is assigned.
-            if (checkpoint == null) GameObject.FindGameObjectWithTag("Respawn").TryGetComponent(out checkpoint); 
+            if (checkpoint == null) GameObject.FindGameObjectWithTag("Respawn").TryGetComponent(out checkpoint);
             checkpoint.SetActive(true);
         }
 
         private void Update()
         {
             ReadAxes();
+
             SetMovementFlags();
             SetJumpFlags();
+
             TimeDilation();
             Animate();
         }
@@ -56,6 +58,18 @@ namespace Chrono
                 return (Time.deltaTime / worldTimeDilation) * PlayerTimeDilation;
             }
             else return Time.deltaTime;
+        }
+
+        Vector3 Platform()
+        {
+            platformDeltaX = platformVector.x * GetPlayerDeltaTime();
+            platformDeltaY = platformVector.y * GetPlayerDeltaTime();
+
+            //if (platformDeltaY < 0) { platformDeltaY -= gravVelocity; }
+
+            if (isOnPlatform) return new Vector3(platformDeltaX, platformDeltaY, 0);
+            return Vector3.zero;
+
         }
 
         Vector3 Move()
@@ -96,14 +110,12 @@ namespace Chrono
 
             // Reset gravity if we're on the ground
             if (isGrounded) gravVelocity = 0;
-
-            //// Reset gravity if it's too high (we're stuck on an edge)
-            //if (gravVelocity < -1) { gravVelocity = 0; }
-            //else
-            //{
-            motionVector += Fall();
-            if (!isMotionDelta) isMotionDelta = true;
-            //}
+            else
+            {
+                // Fall if we're not
+                motionVector += Fall();
+                if (!isMotionDelta) isMotionDelta = true;
+            }
 
             // Add jump from input to landing
             if ((isGrounded && jumpInput) || (isJumping && !isGrounded))
@@ -111,6 +123,9 @@ namespace Chrono
                 motionVector += Jump();
                 if (!isMotionDelta) isMotionDelta = true;
             }
+
+            motionVector += Platform();
+            if (!isMotionDelta) isMotionDelta = true;
 
             // If there is a change apply movement
             if (isMotionDelta) playerBody.MovePosition(motionVector);
@@ -121,15 +136,23 @@ namespace Chrono
         {
             Vector3 boundsLimiter = new Vector3(0.15f, 0.4f, 0);
             float detectionRange = 0.05f + boundsLimiter.y / 2;
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-            RaycastHit2D groundDetection = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size - boundsLimiter, 0f, Vector2.down, detectionRange, LayerMask.GetMask("Ground"));
+            BoxCollider2D playerCollider = GetComponent<BoxCollider2D>();
+            RaycastHit2D groundDetection = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size - boundsLimiter, 0f, Vector2.down, detectionRange, LayerMask.GetMask("Ground"));
+
+            RaycastHit2D platformDetection = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size - boundsLimiter, 0f, Vector2.down, detectionRange, LayerMask.GetMask("Platform"));
+            if (platformDetection.collider != null)
+            {
+                isOnPlatform = true;
+                platformVector = platformDetection.collider.attachedRigidbody.velocity;
+            }
+            else isOnPlatform = false;
 
             Color rayColor;
             if (groundDetection.collider != null) rayColor = Color.green; else rayColor = Color.red;
-            Debug.DrawRay(collider.bounds.center + new Vector3(-collider.bounds.extents.x + boundsLimiter.x / 2, 0), new Vector3(collider.bounds.size.x - boundsLimiter.x, 0), rayColor);
-            Debug.DrawRay(collider.bounds.center + new Vector3(0, collider.bounds.extents.y - boundsLimiter.y / 2), new Vector3(0, -collider.bounds.size.y + boundsLimiter.y - detectionRange, 0f), rayColor);
+            Debug.DrawRay(playerCollider.bounds.center + new Vector3(-playerCollider.bounds.extents.x + boundsLimiter.x / 2, 0), new Vector3(playerCollider.bounds.size.x - boundsLimiter.x, 0), rayColor);
+            Debug.DrawRay(playerCollider.bounds.center + new Vector3(0, playerCollider.bounds.extents.y - boundsLimiter.y / 2), new Vector3(0, -playerCollider.bounds.size.y + boundsLimiter.y - detectionRange, 0f), rayColor);
 
-            return groundDetection.collider != null;
+            return groundDetection.collider != null || platformDetection.collider != null;
         }
 
         void ReadAxes()
@@ -237,14 +260,5 @@ namespace Chrono
             }
         }
 
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.gameObject.layer == 9 && collision.gameObject.TryGetComponent(out Rigidbody2D rb))
-            {
-                motionVector += new Vector3(rb.velocity.x * GetPlayerDeltaTime(), rb.velocity.y * GetPlayerDeltaTime());
-                isGrounded = true;
-            }
-        }
     }
-
 }
