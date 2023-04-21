@@ -164,7 +164,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -267,4 +267,7 @@ MonoBehaviour:
   worldTimeDilation: 0.25
   PlayerTimeDilation: 0.75
   jumpSound: {fileID: 8300000, guid: 72c166ed30c59b040a25c7e426ac8f95, type: 3}
+  splashStepSound: {fileID: 8300000, guid: cb497ea52e044f74ca08ca9ab9e56e5a, type: 3}
+  slowSplashSound: {fileID: 8300000, guid: b068eca655f14934181bfb1b0fe7a914, type: 3}
+  hardStepSound: {fileID: 8300000, guid: 826cc782a2c3e10419b8e9611b056125, type: 3}
   jumpSoundResetTime: 8

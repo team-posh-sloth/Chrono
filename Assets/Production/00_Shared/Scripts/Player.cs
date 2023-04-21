@@ -9,7 +9,7 @@ namespace Chrono
         public Checkpoint checkpoint;
         [SerializeField] float speed = 5, jumpMagnitude = 9, gravity = 9.8f, worldTimeDilation = 0.25f, PlayerTimeDilation = 0.75f;
 
-        [SerializeField] AudioClip jumpSound;
+        [SerializeField] AudioClip jumpSound, splashStepSound, slowSplashSound, hardStepSound;
         [SerializeField] int jumpSoundResetTime = 8;
         int jumpSoundResetTimer;
 
@@ -110,14 +110,30 @@ namespace Chrono
                 motionVector += Move();
                 if (!isMotionDelta) isMotionDelta = true;
             }
+            if (isMoving && isGrounded && !isJumping && !jumpInput)
+            {
+                playerAudio.volume = 1;
+                if (isOnPlatform) PlaySound(hardStepSound, true);
+                else if (Time.timeScale == 1) PlaySound(splashStepSound, true);
+                else
+                {
+                    PlaySound(splashStepSound, true, PlayerTimeDilation);
+                }
+            }
 
             // Reset gravity if we're on the ground
-            if (isGrounded) gravVelocity = 0;
+            if (isGrounded)
+            {
+                gravVelocity = 0;
+                if (!isOnPlatform) PlaySound(false);
+            }
             else
             {
                 // Fall if we're not
                 motionVector += Fall();
                 if (!isMotionDelta) isMotionDelta = true;
+
+                if (playerAudio.clip == hardStepSound) PlaySound(false);
             }
 
             // Add jump from input to landing
@@ -196,7 +212,9 @@ namespace Chrono
                 jumpInput = true;
                 if (jumpSoundResetTimer == 0)
                 {
-                    PlaySound(jumpSound);
+                    playerAudio.volume = 0.2f;
+                    if (Time.timeScale == 1) PlaySound(jumpSound, false);
+                    else PlaySound(jumpSound, false, PlayerTimeDilation);
                     jumpSoundResetTimer = jumpSoundResetTime;
                 }
             }
@@ -248,12 +266,19 @@ namespace Chrono
             else playerAnim.Play("player_idle");
         }
 
-        void PlaySound(AudioClip sound)
+        void PlaySound(AudioClip sound, bool looping = false, float pitch = 1)
         {
-            playerAudio.clip = sound;
-            playerAudio.Play();
+            if (playerAudio.pitch != pitch) playerAudio.pitch = pitch;
+            if (playerAudio.clip != sound) playerAudio.clip = sound;
+            if (playerAudio.loop != looping) playerAudio.loop = looping;
+            if (!playerAudio.isPlaying) playerAudio.Play();
         }
 
+        void PlaySound(bool stop)
+        {
+            if (stop) playerAudio.Stop();
+            playerAudio.loop = false;
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
