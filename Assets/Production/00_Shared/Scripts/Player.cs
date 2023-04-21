@@ -37,6 +37,9 @@ namespace Chrono
 
         private void Update()
         {
+            // Returns player to checkpoint if fallen below ground level
+            if (transform.position.y < -5.5) transform.position = checkpoint.transform.position;
+
             ReadAxes();
 
             SetMovementFlags();
