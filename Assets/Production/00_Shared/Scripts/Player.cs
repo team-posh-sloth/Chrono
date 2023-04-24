@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Chrono
 {
@@ -37,6 +38,18 @@ namespace Chrono
 
         private void Update()
         {
+            #if !UNITY_WEBGL
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+            #endif
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                transform.position = checkpoint.transform.position;
+            }
+
             // Returns player to checkpoint if fallen below ground level
             if (transform.position.y < -5.5) transform.position = checkpoint.transform.position;
 
@@ -65,8 +78,8 @@ namespace Chrono
 
         Vector3 Platform()
         {
-            platformDeltaX = platformVector.x * GetPlayerDeltaTime();
-            platformDeltaY = platformVector.y * GetPlayerDeltaTime();
+            platformDeltaX = platformVector.x * Time.deltaTime;
+            platformDeltaY = platformVector.y * Time.deltaTime;
 
             //if (platformDeltaY < 0) { platformDeltaY -= gravVelocity; }
 
@@ -125,7 +138,7 @@ namespace Chrono
             if (isGrounded)
             {
                 gravVelocity = 0;
-                if (!isOnPlatform) PlaySound(false);
+                /*if (!isOnPlatform) */PlaySound(false);
             }
             else
             {
@@ -286,7 +299,13 @@ namespace Chrono
             {
                 transform.position = checkpoint.transform.position;
             }
+
+            if (collision.CompareTag("Finish"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
+
 
     }
 }
